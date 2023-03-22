@@ -1,0 +1,96 @@
+// home page api
+GET http://localhost:5000/
+
+// all ticket get api
+###
+GET http://localhost:5000/api/tickets
+
+// single ticket create
+### 
+POST http://localhost:5000/api/tickets
+Content-Type: application/json
+
+{
+  "name": "Ropon", 
+  "email": "ropon@gmail.com", 
+  "phone": "01862177791", 
+  "to": "Chandpur", 
+  "from": "Dhaka", 
+  "seatNumber": "012", 
+  "dateTime": "22-3-2023"
+}
+
+// bulk ticket create 
+###
+POST http://localhost:5000/api/tickets/bulk
+Content-Type: application/json
+
+[
+  {
+    "name": "Rimon", 
+    "email": "rimon@gmail.com", 
+    "phone": "01862177789", 
+    "to": "Chandpur", 
+    "from": "Dhaka", 
+    "seatNumber": "011", 
+    "dateTime": "22-3-2023"
+  },
+  {
+    "name": "shahanaz", 
+    "email": "shahanaz@gmail.com", 
+    "phone": "01862177790", 
+    "to": "Chandpur", 
+    "from": "Dhaka", 
+    "seatNumber": "033", 
+    "dateTime": "22-3-2023"
+  }
+]
+
+// bulk ticket update
+### 
+PUT http://localhost:5000/api/tickets/bulk
+Content-Type: application/json
+
+{
+  "ids": ["6419de9c21d8a033acbe79ad","6419d85577dd14411b4e8c83","6419de9c21d8a033acbe79ac"],
+  "data": {
+    "name": "Hello name of the test",
+    "to": "Dhaka",
+    "from": "chattogram"
+  }
+}
+
+// bulk ticket delete
+###
+DELETE http://localhost:5000/api/tickets/bulk
+Content-Type: application/json
+
+{
+  "ids": ["6419de9c21d8a033acbe79ac","6419de9c21d8a033acbe79ad"]
+}
+
+// single ticket get api
+###
+GET http://localhost:5000/api/tickets/6419d85577dd14411b4e8c83
+
+// single ticket update api
+###
+PUT http://localhost:5000/api/tickets/6419d85577dd14411b4e8c83
+Content-Type: application/json
+
+{
+  "name": "rimon",
+  "email": "rimon@gmail.com",
+  "phone": "09877766644",
+  "seatNumber": "23",
+  "to": "Chandpur"
+}
+
+// single ticket delete
+###
+DELETE http://localhost:5000/api/tickets/6419d85577dd14411b4e8c83
+
+
+// search ticket {name,email,phone,seat number, from, to}
+###
+GET http://localhost:5000/api/tickets/search?name=nure&email=nur@gmail.com&phone=92&setNumber=01&from=dhaka&to=chandpur

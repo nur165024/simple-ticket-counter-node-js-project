@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const databaseConnection = require("../config/dbConnection");
+const tickets = require("../routes/ticketRoutes");
 
 const app = express();
 app.use([
@@ -12,12 +13,11 @@ app.use([
 ]);
 databaseConnection();
 
+// all routes
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
-app.get("/page", (req, res) => {
-  res.send("this is our dynamic pages");
-});
+app.use("/api/tickets", tickets);
 
 app.use((req, res, next) => {
   const error = new Error("404 Not Found");
